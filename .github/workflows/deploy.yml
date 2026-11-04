@@ -1,4 +1,4 @@
-name: Deploy Riya Birthday
+name: Deploy Birthday_Special
 
 on:
   push:
