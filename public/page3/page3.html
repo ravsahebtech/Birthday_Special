@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <title>Riya · Photo Experience</title>
+  <title>Mama · Photo Experience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -301,17 +301,17 @@
     (function () {
       'use strict';
 
-      // ----- ALL 9 RIYA PHOTOS - EXACT filenames from your screenshot -----
+      // ----- ALL 9 Mama PHOTOS - EXACT filenames from your screenshot -----
       const PHOTOS = [
-        './IMG_20260826_094207_668.jpeg',
-        './IMG_20260826_094207_668_1.jpeg',
-        './IMG_20260826_094207_668_3.jpeg',
-        './IMG_20260826_094207_668_6.jpeg',
-        './IMG_20260826_094207_668_7.jpeg',
-        './IMG_20260826_094207_668_10.jpeg',
-        './IMG_20260826_094207_669_5.jpeg',
-        './IMG_20260826_094207_669_8.jpeg',
-        './IMG_20260826_094207_670_9.jpeg',
+        './mama_1.png',
+        './mama_2.jpeg',
+        './mama_3.png',
+        './mama_4.png',
+        './mama_5.png',
+        './mama_6.png',
+        './mama_7.jpg',
+        './mama_8.jpeg',
+        './mama_9.jpeg',
       ];
 
       const PHOTO_DISPLAY_MS = 3800;
@@ -336,7 +336,7 @@
         PHOTOS.forEach((src, i) => {
           const img = document.createElement('img');
           img.src = src;
-          img.alt = `Riya photo ${i + 1}`;
+          img.alt = `Mama photo ${i + 1}`;
           img.dataset.index = i;
           img.className = (i === 0) ? 'active' : '';
           img.loading = 'lazy';
@@ -497,7 +497,7 @@
           });
         }
 
-        console.log('🌸 Riya Photo Experience loaded — 9 memories');
+        console.log('🌸 Mama Photo Experience loaded — 9 memories');
       }
 
       if (document.readyState === 'loading') {

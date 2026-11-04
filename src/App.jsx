@@ -66,7 +66,7 @@ function App() {
       const { type } = event.data || {};
 
       // Create a unique ID for this message to detect duplicates
-      const messageId = `${type}_${Date.now()}_${Math.random()}`;
+      // const messageId = `${type}_${Date.now()}_${Math.random()}`;
 
       // If same message type is already being processed, ignore
       if (lastProcessedMessageRef.current === type) {

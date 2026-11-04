@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Box Open</title>
+
     <style>
         * {
             box-sizing: border-box;
@@ -68,7 +69,7 @@
         /* Family photo container - hidden initially */
         .family-container {
             position: absolute;
-            top: 0;
+            top: 0px;
             left: 0;
             width: 100%;
             height: 100%;
@@ -79,19 +80,42 @@
             opacity: 0;
             transition: opacity 1.2s ease;
             pointer-events: none;
-            padding: 20px;
+            padding: 10px;
         }
 
         .family-container.show {
             opacity: 1;
         }
 
-        .family-container img {
-            max-width: 92%;
-            max-height: 82%;
+        /* 10 Photos Gallery */
+        .family-gallery {
+            width: 100%;
+            height: 85%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 10px;
+            padding: 5px;
+        }
+
+        /* Golden Photo Frames */
+        .family-gallery .photo-box {
+            min-width: 0;
+            min-height: 0;
+            overflow: hidden;
+            padding: 3px;
+            border: 1.5px solid #d6ad55;
+            border-radius: 9px;
+            background: rgba(255, 250, 235, 0.95);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .family-gallery .photo-box img {
+            width: 100%;
+            height: 100%;
+            display: block;
             object-fit: contain;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(255, 215, 0, 0.08);
+            border-radius: 5px;
         }
 
         .family-text {
@@ -113,7 +137,7 @@
             opacity: 1;
         }
 
-        /* Simple message - bilkul light */
+        /* Simple message */
         .message {
             position: fixed;
             top: 16px;
@@ -133,12 +157,14 @@
             display: none;
         }
 
-        /* subtle warm vignette overlay for family photo */
+        /* Subtle warm vignette overlay */
         .vignette {
             position: absolute;
             inset: 0;
             pointer-events: none;
-            background: radial-gradient(ellipse at center, transparent 60%, rgba(20, 10, 30, 0.3) 100%);
+            background: radial-gradient(ellipse at center,
+                    transparent 60%,
+                    rgba(20, 10, 30, 0.3) 100%);
             opacity: 0;
             transition: opacity 1s ease;
             z-index: 2;
@@ -151,11 +177,16 @@
         @media (max-width: 480px) {
             .family-text {
                 font-size: 14px;
-                margin-top: 12px;
+                margin-top: 10px;
             }
-            .family-container img {
-                max-width: 96%;
-                max-height: 76%;
+
+            .family-gallery {
+                height: 95%;
+                gap: 5px;
+            }
+
+            .family-gallery .photo-box {
+                padding: 2px;
             }
         }
     </style>
@@ -163,27 +194,77 @@
 
 <body>
 
-    <!-- Simple message - chhota aur clean -->
+    <!-- Simple message -->
     <div class="message" id="message">
         Click Three Times On Box
     </div>
 
     <div class="video-box" id="videoBox">
+
         <video id="myVideo">
             <source src="boxOpening.mp4" type="video/mp4">
         </video>
 
-        <!-- Family photo container (hidden initially) -->
+        <!-- Vignette -->
         <div class="vignette" id="vignette"></div>
+
+        <!-- Family Gallery -->
         <div class="family-container" id="familyContainer">
-            <img src="family.jpeg" alt="Riya with family" id="familyImage" />
+
+            <div class="family-gallery">
+
+                <div class="photo-box">
+                    <img src="./family_1.jpeg" alt="Family Photo 1">
+                </div>
+
+                <div class="photo-box">
+                    <img src="./family_2.jpeg" alt="Family Photo 2">
+                </div>
+
+                <div class="photo-box">
+                    <img src="./family_3.jpeg" alt="Family Photo 3">
+                </div>
+
+                <div class="photo-box">
+                    <img src="./family_4.jpeg" alt="Family Photo 4">
+                </div>
+
+                <div class="photo-box">
+                    <img src="./family_5.jpeg" alt="Family Photo 5">
+                </div>
+
+                <div class="photo-box">
+                    <img src="./family_6.jpeg" alt="Family Photo 6">
+                </div>
+
+                <div class="photo-box">
+                    <img src="./family_7.jpeg" alt="Family Photo 7">
+                </div>
+
+                <div class="photo-box">
+                    <img src="./family_8.png" alt="Family Photo 8">
+                </div>
+
+                <div class="photo-box">
+                    <img src="./family_9.jpeg" alt="Family Photo 9">
+                </div>
+
+                <div class="photo-box">
+                    <img src="./family_10.jpeg" alt="Family Photo 10">
+                </div>
+
+            </div>
+
             <div class="family-text" id="familyText">
                 The people who make every moment special. ❤️
             </div>
+
         </div>
+
     </div>
 
     <script>
+
         const video = document.getElementById('myVideo');
         const videoBox = document.getElementById('videoBox');
         const message = document.getElementById('message');
@@ -194,10 +275,11 @@
         let clickTimer;
         let isActive = true;
         let isFirstClick = true;
-        let transitionStarted = false; // Guard to prevent duplicate transitions
+        let transitionStarted = false;
 
-        // ===== VIDEO END HANDLER - NEW FLOW =====
+        // ===== VIDEO END HANDLER =====
         video.addEventListener('ended', function () {
+
             // Prevent duplicate transitions
             if (transitionStarted) return;
             transitionStarted = true;
@@ -209,21 +291,26 @@
             // Fade out video
             video.style.opacity = '0';
 
-            // After video fades out, show family photo
+            // After video fades out, show family gallery
             setTimeout(function () {
+
                 // Hide video completely
                 video.style.display = 'none';
 
-                // Show family photo with fade-in
+                // Show family photos with fade-in
                 vignette.classList.add('show');
                 familyContainer.classList.add('show');
 
-                // Wait 2 seconds, then navigate to Page 6
+                // Wait 5 seconds, then navigate to Page 6
                 setTimeout(function () {
-                    window.parent.postMessage({ type: 'NEXT_PAGE' }, '*');
-                }, 2000);
+                    window.parent.postMessage(
+                        { type: 'NEXT_PAGE' },
+                        '*'
+                    );
+                }, 5000);
 
-            }, 800); // Match video fade-out duration
+            }, 800);
+
         });
 
         function vibratePhone(pattern) {
@@ -233,9 +320,10 @@
         }
 
         videoBox.addEventListener('click', function () {
+
             if (!isActive) return;
 
-            // First click - message hide
+            // First click - hide message
             if (isFirstClick) {
                 message.classList.add('hide');
                 isFirstClick = false;
@@ -243,9 +331,11 @@
 
             vibratePhone(30);
             clickCount++;
+
             clearTimeout(clickTimer);
 
             if (clickCount === 3) {
+
                 vibratePhone([50, 30, 50]);
 
                 if (video.paused) {
@@ -257,15 +347,22 @@
                 isActive = false;
                 clickCount = 0;
                 videoBox.style.cursor = 'default';
+
                 return;
             }
 
             clickTimer = setTimeout(function () {
                 clickCount = 0;
             }, 1000);
+
         });
 
-        document.body.addEventListener('touchstart', function () {}, { once: true });
+        document.body.addEventListener(
+            'touchstart',
+            function () { },
+            { once: true }
+        );
+
     </script>
 
 </body>
