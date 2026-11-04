@@ -174,7 +174,12 @@
         transition: opacity 0.5s ease, visibility 0.5s ease;
     }
 
-
+    #btn.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        cursor: pointer;
+    }
 
     audio {
         display: none;
@@ -278,8 +283,10 @@
         }
 
         function stopDrag(e) {
-            e.preventDefault();
+            // FIX: pehle check karo, preventDefault tabhi jab drag chal raha ho.
+            // Pehle har tap pe preventDefault ho raha tha jo button ka click cancel kar deta tha.
             if (!isDragging || isCut) return;
+            e.preventDefault();
             isDragging = false;
             knife.classList.remove('dragging');
             if (rafId) {
@@ -441,11 +448,13 @@
             buttonTimer = setTimeout(() => {
                 btn.classList.add('show');
             }, 30000);
-
-            btn.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'RESTART' }, '*');  // ✅ RESTART message bhejo
-            })
         }
+
+        // FIX: button click listener ab bahar hai, sirf ek baar attach hota hai
+        // RESTART -> parent seedha page 1 (home) pe le jata hai
+        btn.addEventListener('click', () => {
+            window.parent.postMessage({ type: 'RESTART' }, '*');
+        });
 
         // Event listeners
         knife.addEventListener('touchstart', startDrag, { passive: false });
@@ -454,7 +463,7 @@
         window.addEventListener('touchmove', onDrag, { passive: false });
         window.addEventListener('mousemove', onDrag);
 
-        window.addEventListener('touchend', stopDrag);
+        window.addEventListener('touchend', stopDrag, { passive: false });
         window.addEventListener('mouseup', stopDrag);
 
         document.body.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
