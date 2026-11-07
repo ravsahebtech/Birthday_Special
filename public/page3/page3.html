@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <title>Mama · Photo Experience</title>
+  <title>Aditya · Photo Experience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -301,17 +301,17 @@
     (function () {
       'use strict';
 
-      // ----- ALL 9 Mama PHOTOS - EXACT filenames from your screenshot -----
+      // ----- ALL 9 aditya PHOTOS - EXACT filenames from your screenshot -----
       const PHOTOS = [
-        './mama_1.png',
-        './mama_2.jpeg',
-        './mama_3.png',
-        './mama_4.png',
-        './mama_5.png',
-        './mama_6.png',
-        './mama_7.jpg',
-        './mama_8.jpeg',
-        './mama_9.jpeg',
+        './aditya_1.png',
+        './aditya_2.jpeg',
+        './aditya_3.png',
+        './aditya_4.png',
+        './aditya_5.jpeg',
+        './aditya_6.jpeg',
+        './aditya_7.jpeg',
+        './aditya_8.jpeg',
+        './aditya_9.jpeg',
       ];
 
       const PHOTO_DISPLAY_MS = 3800;
@@ -336,7 +336,7 @@
         PHOTOS.forEach((src, i) => {
           const img = document.createElement('img');
           img.src = src;
-          img.alt = `Mama photo ${i + 1}`;
+          img.alt = `aditya photo ${i + 1}`;
           img.dataset.index = i;
           img.className = (i === 0) ? 'active' : '';
           img.loading = 'lazy';
@@ -497,7 +497,7 @@
           });
         }
 
-        console.log('🌸 Mama Photo Experience loaded — 9 memories');
+        console.log('🌸 aditya Photo Experience loaded — 9 memories');
       }
 
       if (document.readyState === 'loading') {
