@@ -335,11 +335,16 @@
 
         PHOTOS.forEach((src, i) => {
           const img = document.createElement('img');
-          img.src = src;
           img.alt = `aditya photo ${i + 1}`;
           img.dataset.index = i;
           img.className = (i === 0) ? 'active' : '';
-          img.loading = 'lazy';
+          img.loading = i === 0 ? 'eager' : 'lazy';
+
+          if (i === 0) {
+            img.loading = 'eager';
+            img.fetchPriority = 'high';
+          }
+          img.src = src;
 
           img.onload = function () {
             loadedCount++;
@@ -406,7 +411,7 @@
 
       function startSlideshow() {
         if (intervalId) clearInterval(intervalId);
-        showPhoto(0);
+
         intervalId = setInterval(nextPhoto, PHOTO_DISPLAY_MS);
       }
 

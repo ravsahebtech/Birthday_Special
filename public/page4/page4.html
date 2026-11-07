@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <title>Happy Birthday Aditya</title>
+  <!-- Preload images immediately when page opens -->
+  <link rel="preload" as="image" href="./starPage.png" fetchpriority="high" />
+
+  <link rel="preload" as="image" href="./happy-birthday-aditya.png" fetchpriority="high" />
+  
   <style>
     * {
       box-sizing: border-box;
@@ -42,12 +47,15 @@
       0% {
         transform: scale(1) rotate(0deg);
       }
+
       30% {
         transform: scale(1.02) rotate(0.15deg);
       }
+
       70% {
         transform: scale(0.98) rotate(-0.15deg);
       }
+
       100% {
         transform: scale(1.01) rotate(0.1deg);
       }
@@ -114,39 +122,105 @@
       animation: diamondGlow 3s infinite alternate;
     }
 
-    .pink { color: #ff69b4; background: #ff69b4; }
-    .red { color: #ff3333; background: #ff3333; }
-    .blue { color: #33aaff; background: #33aaff; }
-    .orange { color: #ffaa33; background: #ffaa33; }
+    .pink {
+      color: #ff69b4;
+      background: #ff69b4;
+    }
 
-    .bubble-pink { background: rgba(255, 105, 180, 0.2); border-color: #ff69b4; }
-    .bubble-red { background: rgba(255, 51, 51, 0.2); border-color: #ff3333; }
-    .bubble-blue { background: rgba(51, 170, 255, 0.2); border-color: #33aaff; }
-    .bubble-orange { background: rgba(255, 170, 51, 0.2); border-color: #ffaa33; }
+    .red {
+      color: #ff3333;
+      background: #ff3333;
+    }
+
+    .blue {
+      color: #33aaff;
+      background: #33aaff;
+    }
+
+    .orange {
+      color: #ffaa33;
+      background: #ffaa33;
+    }
+
+    .bubble-pink {
+      background: rgba(255, 105, 180, 0.2);
+      border-color: #ff69b4;
+    }
+
+    .bubble-red {
+      background: rgba(255, 51, 51, 0.2);
+      border-color: #ff3333;
+    }
+
+    .bubble-blue {
+      background: rgba(51, 170, 255, 0.2);
+      border-color: #33aaff;
+    }
+
+    .bubble-orange {
+      background: rgba(255, 170, 51, 0.2);
+      border-color: #ffaa33;
+    }
 
     @keyframes sparkleTwinkle {
-      0% { opacity: 0.2; transform: scale(0.5); }
-      100% { opacity: 1; transform: scale(1.2); }
+      0% {
+        opacity: 0.2;
+        transform: scale(0.5);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
     }
 
     @keyframes bubbleFloat {
-      0% { transform: translateY(0) scale(1); opacity: 0.4; }
-      50% { transform: translateY(-20px) scale(1.2); opacity: 0.9; }
-      100% { transform: translateY(0) scale(1); opacity: 0.4; }
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.4;
+      }
+
+      50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.4;
+      }
     }
 
     @keyframes diamondGlow {
-      0% { opacity: 0.3; transform: rotate(45deg) scale(0.8); }
-      100% { opacity: 1; transform: rotate(45deg) scale(1.3); }
+      0% {
+        opacity: 0.3;
+        transform: rotate(45deg) scale(0.8);
+      }
+
+      100% {
+        opacity: 1;
+        transform: rotate(45deg) scale(1.3);
+      }
     }
 
-    .bubble-small { width: 4px; height: 4px; }
-    .bubble-medium { width: 8px; height: 8px; }
-    .bubble-large { width: 13px; height: 13px; }
+    .bubble-small {
+      width: 4px;
+      height: 4px;
+    }
+
+    .bubble-medium {
+      width: 8px;
+      height: 8px;
+    }
+
+    .bubble-large {
+      width: 13px;
+      height: 13px;
+    }
 
     .button-container {
       position: absolute;
-      bottom: 3%; 
+      bottom: 3%;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -199,9 +273,17 @@
     }
 
     @keyframes buttonGlow {
-      0% { box-shadow: 0px 0px 6px gold, 0px 0px 12px orange; }
-      50% { box-shadow: 0px 0px 8px gold, 0px 0px 18px orange; }
-      100% { box-shadow: 0px 0px 6px gold, 0px 0px 12px orange; }
+      0% {
+        box-shadow: 0px 0px 6px gold, 0px 0px 12px orange;
+      }
+
+      50% {
+        box-shadow: 0px 0px 8px gold, 0px 0px 18px orange;
+      }
+
+      100% {
+        box-shadow: 0px 0px 6px gold, 0px 0px 12px orange;
+      }
     }
 
     #birthdaySong {
@@ -287,7 +369,7 @@
 
       // ===== BACKGROUND IMAGE - PARTY VIBE (3 seconds) =====
       const bgImage = document.getElementById('bgImage');
-      
+
       setTimeout(() => {
         bgImage.style.animation = 'none';
         bgImage.style.transform = 'scale(1) rotate(0deg)';
@@ -295,7 +377,7 @@
 
       // ===== TOP IMAGE OPACITY =====
       const topImage = document.getElementById('topImage');
-      
+
       setTimeout(() => { topImage.style.opacity = '0.4'; }, 1000);
       setTimeout(() => { topImage.style.opacity = '0.6'; }, 2000);
       setTimeout(() => { topImage.style.opacity = '0.8'; }, 3000);
@@ -303,7 +385,7 @@
 
       // ===== SONG AUTO-PLAY =====
       const song = document.getElementById('birthdaySong');
-      song.play().catch(() => {});
+      song.play().catch(() => { });
       document.body.addEventListener('touchstart', function playOnce() {
         song.play();
         document.body.removeEventListener('touchstart', playOnce);
@@ -315,7 +397,7 @@
         btn.classList.add('show');
       }, 15000);
 
-      btn.addEventListener('click', function () { 
+      btn.addEventListener('click', function () {
         setTimeout(() => {
           window.parent.postMessage({ type: 'NEXT_PAGE' }, '*');
         }, 500);

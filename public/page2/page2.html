@@ -203,6 +203,12 @@
       z-index: 10;
       filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.2));
       will-change: transform;
+
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-touch-callout: none;
+      pointer-events: none;
     }
 
     .balloon-img.left {
@@ -262,7 +268,7 @@
 
 
     button.showBtn {
-      display: block !important; 
+      display: block !important;
     }
 
     /* Mobile specific */
@@ -411,7 +417,7 @@
 
     setTimeout(() => {
       button.classList.add("showBtn");
-    }, 5000);
+    }, 3000);
     // BUTTON CLICK HANDLER - pehle se hi add karo
 
     button.addEventListener("click", function () {
